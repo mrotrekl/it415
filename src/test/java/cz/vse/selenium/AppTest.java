@@ -52,7 +52,7 @@ public class AppTest {
         searchInput.sendKeys("travis");
         searchInput.sendKeys(Keys.ENTER);
         Assert.assertTrue(driver.getTitle().startsWith("travis - "));
-        driver.quit();
+        //driver.quit();
     }
 
     @Test
