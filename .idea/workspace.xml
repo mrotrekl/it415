@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3fd95052-e2c0-4689-a644-1bf8dd93e750" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1VIzSH9ojI56FqWbyLaWHUqKHyq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunManager" selected="JUnit.AppTest.google2_should_fail">
+    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumexample-master" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cz.vse.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cz.vse.selenium" />
+      <option name="MAIN_CLASS_NAME" value="cz.vse.selenium.AppTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppTest.google1_should_pass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumexample-master" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cz.vse.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cz.vse.selenium" />
+      <option name="MAIN_CLASS_NAME" value="cz.vse.selenium.AppTest" />
+      <option name="METHOD_NAME" value="google1_should_pass" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppTest.google2_should_fail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumexample-master" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cz.vse.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cz.vse.selenium" />
+      <option name="MAIN_CLASS_NAME" value="cz.vse.selenium.AppTest" />
+      <option name="METHOD_NAME" value="google2_should_fail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AppTest.google2_should_fail" />
+        <item itemvalue="JUnit.AppTest.google1_should_pass" />
+        <item itemvalue="JUnit.AppTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fd95052-e2c0-4689-a644-1bf8dd93e750" name="Default Changelist" comment="" />
+      <created>1576955401010</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576955401010</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="517" y="182" key="#Project_Structure" timestamp="1576957149169">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="517" y="182" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1576957149169" />
+    <state width="727" height="275" key="GridCell.Tab.0.bottom" timestamp="1576962255491">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="727" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1576962255491" />
+    <state width="727" height="275" key="GridCell.Tab.0.center" timestamp="1576962255491">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="727" height="275" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1576962255491" />
+    <state width="727" height="275" key="GridCell.Tab.0.left" timestamp="1576962255491">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="727" height="275" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1576962255491" />
+    <state width="727" height="275" key="GridCell.Tab.0.right" timestamp="1576962255491">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="727" height="275" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1576962255491" />
+    <state x="655" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1576960575347">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="655" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1576960575347" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/cz/vse/selenium/AppTest.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
