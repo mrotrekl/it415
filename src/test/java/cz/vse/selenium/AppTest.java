@@ -45,6 +45,27 @@ public class AppTest {
 //        driver.close();
     }
 
+
+    @Test
+    public void shouldLoginUsingValidCredentials() {
+        // given
+        driver.get("http://digitalnizena.cz/rukovoditel/");
+
+        // when
+        WebElement usernameInput = driver.findElement(By.name("username"));
+        usernameInput.sendKeys("rukovoditel");
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        passwordInput.sendKeys("vse456ru");
+        WebElement loginButton = driver.findElement(By.className("btn-info"));
+        loginButton.click();
+
+        // Then
+
+    }
+
+
+
+
     @Test
     public void google1_should_pass() {
         driver.get("https://www.google.com/");
@@ -106,7 +127,7 @@ public class AppTest {
 
 
     @Test
-    public void shouldLoginUsingValidCredentials() {
+    public void shouldLoginUsingValidCredentials0() {
         // given
         //driver.get("http://demo.churchcrm.io/master/");
         driver.get("http://digitalnizena.cz/church/");
@@ -117,7 +138,7 @@ public class AppTest {
         WebElement passwordInput = driver.findElement(By.id("PasswordBox"));
         passwordInput.sendKeys("church12345");
         WebElement loginButton = driver.findElement(By.className("btn-primary"));
-        loginButton.click();
+        //loginButton.click();
     }
 
     public void shouldCreateNewUser() throws InterruptedException {
