@@ -64,6 +64,60 @@ public class AppTest {
     }
 
 
+    @Test
+    public void shouldNotLoginUsingInvalidCredentials() {
+        // given
+        driver.get("http://digitalnizena.cz/rukovoditel/");
+
+        // when
+        WebElement usernameInput = driver.findElement(By.name("username"));
+        usernameInput.sendKeys("admin");
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        passwordInput.sendKeys("invalidPassssssssword");
+        WebElement loginButton = driver.findElement(By.className("btn-info"));
+        loginButton.click();
+
+        // then
+        //WebElement errorMessageSpan = driver.findElement(By.id("spanMessage"));
+        //Assert.assertEquals("Invalid credentials", errorMessageSpan.getText());
+
+        // validation error exists
+        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
+        // there is no menu
+    }
+
+
+    @Test
+    public void shouldLogOff() {
+        // given
+        driver.get("http://digitalnizena.cz/rukovoditel/");
+
+        // when
+        WebElement usernameInput = driver.findElement(By.name("username"));
+        usernameInput.sendKeys("rukovoditel");
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        passwordInput.sendKeys("vse456ru");
+        WebElement loginButton = driver.findElement(By.className("btn-info"));
+        loginButton.click();
+
+        //Thread.sleep(1000);
+
+
+        //najit rozklikavaci menu
+
+        WebElement dropDownToggle = driver.findElement(By.cssSelector("#dropdown-toggle"));
+
+
+        //najit radek, kliknout na nej
+
+
+
+        // Then
+
+
+
+    }
+
 
 
     @Test
