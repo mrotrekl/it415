@@ -105,7 +105,13 @@ public class AppTest {
 
         //najit rozklikavaci menu
 
-        WebElement dropDownToggle = driver.findElement(By.cssSelector("#dropdown-toggle"));
+
+        //WebElement dropDownToggle = driver.findElement(By.id("user_notifications_report"));
+
+
+        WebElement dropDownToggle = driver.findElement(By.cssSelector("body > div.header.navbar.navbar-inverse.navbar-fixed-top.noprint > div > ul > li.dropdown.user"));
+        dropDownToggle.click();
+
 
 
         //najit radek, kliknout na nej
@@ -117,6 +123,57 @@ public class AppTest {
 
 
     }
+
+
+    // - TC: Project without name is not created
+
+
+    @Test
+    public void shouldNotCreateProjectwithoutName() {
+        // given
+        driver.get("http://digitalnizena.cz/rukovoditel/");
+
+        // when
+        WebElement usernameInput = driver.findElement(By.name("username"));
+        usernameInput.sendKeys("rukovoditel");
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        passwordInput.sendKeys("vse456ru");
+        WebElement loginButton = driver.findElement(By.className("btn-info"));
+        loginButton.click();
+
+        //najit rozklikavaci menu navbar-toggle collapsed
+        WebElement navBarToggle = driver.findElement(By.className("navbar-toggle"));
+        navBarToggle.click();
+
+        //najit radek, kliknout na nej
+        List<WebElement> menuRows = driver.findElements(By.className("page-sidebar-menu"));
+        WebElement secondRow = menuRows.get(0);
+        secondRow.click();
+
+/*       for (WebElement row : menuRows) {
+            row.click();
+        }
+
+*/
+        // Then
+
+/*        WebElement firstRow = depositRows.get(0);
+        String innerHTML = firstRow.getAttribute("innerHTML");
+
+        if (innerHTML.contains(uuid)) {
+            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
+            Assert.assertTrue(innerHTML.contains(depositComment));
+            return true;     // expected condition is met
+        } else {
+            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
+        }
+*/
+
+    }
+
+
+
+
 
 
 
