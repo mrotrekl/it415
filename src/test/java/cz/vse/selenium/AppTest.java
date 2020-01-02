@@ -86,7 +86,6 @@ public class AppTest {
         // there is no menu
     }
 
-
     @Test
     public void shouldLogOff() {
         // given
@@ -102,28 +101,28 @@ public class AppTest {
 
         //Thread.sleep(1000);
 
-
         //najit rozklikavaci menu
 
-
         //WebElement dropDownToggle = driver.findElement(By.id("user_notifications_report"));
-
 
         WebElement dropDownToggle = driver.findElement(By.cssSelector("body > div.header.navbar.navbar-inverse.navbar-fixed-top.noprint > div > ul > li.dropdown.user"));
         dropDownToggle.click();
 
-
-
         //najit radek, kliknout na nej
+
+
+/*        List<WebElement> menuInfoRows = driver.findElements(By.className("fa-sign-out"));
+        WebElement oneRow = menuInfoRows.get(0);
+        oneRow.click();
+*/
+        WebElement menuInfoRows = driver.findElement(By.className("fa-sign-out"));
+        menuInfoRows.click();
 
 
 
         // Then
 
-
-
     }
-
 
     // - TC: Project without name is not created
 
