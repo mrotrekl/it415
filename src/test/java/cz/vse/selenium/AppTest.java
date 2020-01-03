@@ -221,6 +221,26 @@ public class AppTest {
         WebElement projectButton = driver.findElement(By.className("btn-primary"));
         projectButton.click();
 
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
+
+
+        WebElement projectnameInput = driver.findElement(By.id("fields_158"));
+        projectnameInput.sendKeys("xrotm01");
+
+        WebElement projectprioritySelect = driver.findElement(By.id("fields_156"));
+        Select select = new Select(projectprioritySelect);
+        select.selectByIndex(1);
+
+        WebElement projectdateInput = driver.findElement(By.id("fields_159"));
+        projectdateInput.click();
+
+        WebElement activeDate = driver.findElement(By.cssSelector("td[class='active day']"));
+        activeDate.click();
+
+        WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton.click();
+
         // Then
 
 /*        WebElement firstRow = depositRows.get(0);
@@ -236,6 +256,84 @@ public class AppTest {
 */
 
     }
+
+
+    @Test
+    public void shouldCreateNewTask() {
+        // given
+        driver.get("http://digitalnizena.cz/rukovoditel/");
+
+        // when
+        WebElement usernameInput = driver.findElement(By.name("username"));
+        usernameInput.sendKeys("rukovoditel");
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        passwordInput.sendKeys("vse456ru");
+        WebElement loginButton = driver.findElement(By.className("btn-info"));
+        loginButton.click();
+
+        //najit rozklikavaci menu navbar-toggle collapsed
+        WebElement navBarToggle = driver.findElement(By.className("navbar-toggle"));
+        navBarToggle.click();
+
+        //najit radek, kliknout na nej fa fa-reorder
+/*        WebElement projectsItem = driver.findElement(By.className("fa-reorder"));
+        projectsItem.click();
+*/
+
+        List<WebElement> menuRows = driver.findElements(By.className("page-sidebar-menu"));
+        WebElement secondRow = menuRows.get(0);
+        secondRow.click();
+
+        driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
+
+        WebElement projectButton = driver.findElement(By.className("btn-primary"));
+        projectButton.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
+
+
+        WebElement projectnameInput = driver.findElement(By.id("fields_158"));
+        projectnameInput.sendKeys("xrotm01");
+
+        WebElement projectprioritySelect = driver.findElement(By.id("fields_156"));
+        Select select = new Select(projectprioritySelect);
+        select.selectByIndex(1);
+
+        WebElement projectdateInput = driver.findElement(By.id("fields_159"));
+        projectdateInput.click();
+
+        WebElement activeDate = driver.findElement(By.cssSelector("td[class='active day']"));
+        activeDate.click();
+
+        WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton.click();
+
+        // Then
+
+/*        WebElement firstRow = depositRows.get(0);
+        String innerHTML = firstRow.getAttribute("innerHTML");
+
+        if (innerHTML.contains(uuid)) {
+            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
+            Assert.assertTrue(innerHTML.contains(depositComment));
+            return true;     // expected condition is met
+        } else {
+            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
+        }
+*/
+
+    }
+
+
+/*
+ - TC: Project with status New, priority High and filled start date as today is created. Verify that there is new row in project table. Delete project after test.
+    Test Suite - Tasks
+ - TC: shouldCreateNewTask (Precondition - there exists project yourname already in the system.) New Task will be created with type Task, name, status New, prio Medium and some description. Verify task attributes (Type Task, description, name, priority, status) on task info page (icon i). Delete that task.
+ - TC: (Precondition - there exists project yourname already in the system.) Create new 7 tasks with different statuses New, Open, Waiting, Done, Closed, Paid, Canceled. Verify that using default filter (New, Open, Waiting) only 3 tasks will be shown. Change applied filter in Filter info dialog to only contain (New, Waiting) ...there are more ways how to do it (you can click small x on Open "label" to delete it, or you can deal with writing into "suggestion box"). Verify only New and Waiting tasks are displayed. Now remove all filters and verify all created tasks are displayed. Delete all tasks using Select all and batch delete.
+*/
+
+
 
     @Test
     public void google1_should_pass() {
