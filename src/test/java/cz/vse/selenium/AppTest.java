@@ -4,10 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -111,7 +108,7 @@ public class AppTest {
         //najit radek, kliknout na nej
 
 
-/*        List<WebElement> menuInfoRows = driver.findElements(By.className("fa-sign-out"));
+/*      List<WebElement> menuInfoRows = driver.findElements(By.className("fa-sign-out"));
         WebElement oneRow = menuInfoRows.get(0);
         oneRow.click();
 */
@@ -144,10 +141,32 @@ public class AppTest {
         WebElement navBarToggle = driver.findElement(By.className("navbar-toggle"));
         navBarToggle.click();
 
-        //najit radek, kliknout na nej
+        //najit radek, kliknout na nej fa fa-reorder
+/*        WebElement projectsItem = driver.findElement(By.className("fa-reorder"));
+        projectsItem.click();
+*/
+
         List<WebElement> menuRows = driver.findElements(By.className("page-sidebar-menu"));
         WebElement secondRow = menuRows.get(0);
         secondRow.click();
+
+        driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
+
+        WebElement projectButton = driver.findElement(By.className("btn-primary"));
+        projectButton.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+
+//fields_158
+
+        WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton.click();
+
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("$('#btn-primary').click()");
+
+//        class="btn btn-primary btn-primary-modal-action"
+
 
 /*       for (WebElement row : menuRows) {
             row.click();
@@ -171,10 +190,52 @@ public class AppTest {
     }
 
 
+    @Test
+    public void shouldCreateProjectwithName() {
+        // given
+        driver.get("http://digitalnizena.cz/rukovoditel/");
 
+        // when
+        WebElement usernameInput = driver.findElement(By.name("username"));
+        usernameInput.sendKeys("rukovoditel");
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        passwordInput.sendKeys("vse456ru");
+        WebElement loginButton = driver.findElement(By.className("btn-info"));
+        loginButton.click();
 
+        //najit rozklikavaci menu navbar-toggle collapsed
+        WebElement navBarToggle = driver.findElement(By.className("navbar-toggle"));
+        navBarToggle.click();
 
+        //najit radek, kliknout na nej fa fa-reorder
+/*        WebElement projectsItem = driver.findElement(By.className("fa-reorder"));
+        projectsItem.click();
+*/
 
+        List<WebElement> menuRows = driver.findElements(By.className("page-sidebar-menu"));
+        WebElement secondRow = menuRows.get(0);
+        secondRow.click();
+
+        driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
+
+        WebElement projectButton = driver.findElement(By.className("btn-primary"));
+        projectButton.click();
+
+        // Then
+
+/*        WebElement firstRow = depositRows.get(0);
+        String innerHTML = firstRow.getAttribute("innerHTML");
+
+        if (innerHTML.contains(uuid)) {
+            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
+            Assert.assertTrue(innerHTML.contains(depositComment));
+            return true;     // expected condition is met
+        } else {
+            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
+        }
+*/
+
+    }
 
     @Test
     public void google1_should_pass() {
