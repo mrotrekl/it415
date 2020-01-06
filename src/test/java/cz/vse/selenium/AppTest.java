@@ -339,27 +339,6 @@ public class AppTest {
         modalButton.click();
 
 
-// entity_items_listing66_21_search_keywords
-
-
-        //odsud jine
-
- /*       WebElement projectnameInput = driver.findElement(By.id("fields_158"));
-        projectnameInput.sendKeys("xrotm01");
-
-        WebElement projectprioritySelect = driver.findElement(By.id("fields_156"));
-        Select select = new Select(projectprioritySelect);
-        select.selectByIndex(1);
-
-        WebElement projectdateInput = driver.findElement(By.id("fields_159"));
-        projectdateInput.click();
-
-        WebElement activeDate = driver.findElement(By.cssSelector("td[class='active day']"));
-        activeDate.click();
-
-        WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
-        modalButton.click();
-*/
         // Then
 
 /*        WebElement firstRow = depositRows.get(0);
@@ -384,6 +363,161 @@ public class AppTest {
  - TC: (Precondition - there exists project yourname already in the system.) Create new 7 tasks with different statuses New, Open, Waiting, Done, Closed, Paid, Canceled. Verify that using default filter (New, Open, Waiting) only 3 tasks will be shown. Change applied filter in Filter info dialog to only contain (New, Waiting) ...there are more ways how to do it (you can click small x on Open "label" to delete it, or you can deal with writing into "suggestion box"). Verify only New and Waiting tasks are displayed. Now remove all filters and verify all created tasks are displayed. Delete all tasks using Select all and batch delete.
 */
 
+    @Test
+    public void shouldCreateNew7Tasks() {
+        // given
+        driver.get("http://digitalnizena.cz/rukovoditel/");
+
+        // when
+        WebElement usernameInput = driver.findElement(By.name("username"));
+        usernameInput.sendKeys("rukovoditel");
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        passwordInput.sendKeys("vse456ru");
+        WebElement loginButton = driver.findElement(By.className("btn-info"));
+        loginButton.click();
+
+        //najit rozklikavaci menu navbar-toggle collapsed
+        WebElement navBarToggle = driver.findElement(By.className("navbar-toggle"));
+        navBarToggle.click();
+
+        //najit radek, kliknout na nej fa fa-reorder
+/*        WebElement projectsItem = driver.findElement(By.className("fa-reorder"));
+        projectsItem.click();
+*/
+
+        List<WebElement> menuRows = driver.findElements(By.className("page-sidebar-menu"));
+        WebElement secondRow = menuRows.get(0);
+        secondRow.click();
+
+        driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
+
+
+//        WebElement resetSearch = driver.findElement(By.className("reset_search")); //
+
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".reset_search")));
+
+        WebElement resetSearch = driver.findElement(By.cssSelector(".reset_search"));
+        resetSearch.click();
+
+        WebElement searchInput = driver.findElement(By.id("entity_items_listing66_21_search_keywords"));
+        searchInput.sendKeys("xrotm01");
+
+        WebElement projectButton = driver.findElement(By.className("btn-info"));
+        projectButton.click();
+
+        WebDriverWait wait2 = new WebDriverWait(driver, 10);
+        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".item_heading_link")));
+
+        WebElement projectLink = driver.findElement(By.cssSelector(".item_heading_link"));
+        projectLink.click();
+
+/*
+        WebElement taskButton = driver.findElement(By.className("btn-primary"));
+        taskButton.click();
+        WebDriverWait wait3 = new WebDriverWait(driver, 10);
+        wait3.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+        WebElement tasknameInput = driver.findElement(By.id("fields_168"));
+        tasknameInput.sendKeys("xrotm01Task");
+        WebElement taskstatusSelect = driver.findElement(By.id("fields_169"));
+        Select select2 = new Select(taskstatusSelect);
+        select2.selectByIndex(0);
+        WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton.click();
+
+        WebElement taskButton12 = driver.findElement(By.className("btn-primary"));
+        taskButton12.click();
+        WebDriverWait wait12 = new WebDriverWait(driver, 10);
+        wait12.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+        WebElement tasknameInput12 = driver.findElement(By.id("fields_168"));
+        tasknameInput12.sendKeys("xrotm01Task");
+        WebElement taskstatusSelect12 = driver.findElement(By.id("fields_169"));
+        Select select12 = new Select(taskstatusSelect12);
+        select12.selectByIndex(1);
+        WebElement modalButton12 = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton12.click();
+
+        WebElement taskButton13 = driver.findElement(By.className("btn-primary"));
+        taskButton13.click();
+        WebDriverWait wait13 = new WebDriverWait(driver, 10);
+        wait13.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+        WebElement tasknameInput13 = driver.findElement(By.id("fields_168"));
+        tasknameInput13.sendKeys("xrotm01Task");
+        WebElement taskstatusSelect13 = driver.findElement(By.id("fields_169"));
+        Select select13 = new Select(taskstatusSelect13);
+        select13.selectByIndex(2);
+        WebElement modalButton13 = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton13.click();
+
+        WebElement taskButton14 = driver.findElement(By.className("btn-primary"));
+        taskButton14.click();
+        WebDriverWait wait14 = new WebDriverWait(driver, 10);
+        wait14.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+        WebElement tasknameInput14 = driver.findElement(By.id("fields_168"));
+        tasknameInput14.sendKeys("xrotm01Task");
+        WebElement taskstatusSelect14 = driver.findElement(By.id("fields_169"));
+        Select select14 = new Select(taskstatusSelect14);
+        select14.selectByIndex(3);
+        WebElement modalButton14 = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton14.click();
+
+        WebElement taskButton15 = driver.findElement(By.className("btn-primary"));
+        taskButton15.click();
+        WebDriverWait wait15 = new WebDriverWait(driver, 10);
+        wait15.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+        WebElement tasknameInput15 = driver.findElement(By.id("fields_168"));
+        tasknameInput15.sendKeys("xrotm01Task");
+        WebElement taskstatusSelect15 = driver.findElement(By.id("fields_169"));
+        Select select15 = new Select(taskstatusSelect15);
+        select15.selectByIndex(4);
+        WebElement modalButton15 = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton15.click();
+
+        WebElement taskButton16 = driver.findElement(By.className("btn-primary"));
+        taskButton16.click();
+        WebDriverWait wait16 = new WebDriverWait(driver, 10);
+        wait16.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+        WebElement tasknameInput16 = driver.findElement(By.id("fields_168"));
+        tasknameInput16.sendKeys("xrotm01Task");
+        WebElement taskstatusSelect16 = driver.findElement(By.id("fields_169"));
+        Select select16 = new Select(taskstatusSelect16);
+        select16.selectByIndex(5);
+        WebElement modalButton16 = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton16.click();
+
+        WebElement taskButton17 = driver.findElement(By.className("btn-primary"));
+        taskButton17.click();
+        WebDriverWait wait17 = new WebDriverWait(driver, 10);
+        wait17.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+        WebElement tasknameInput17 = driver.findElement(By.id("fields_168"));
+        tasknameInput17.sendKeys("xrotm01Task");
+        WebElement taskstatusSelect17 = driver.findElement(By.id("fields_169"));
+        Select select17 = new Select(taskstatusSelect17);
+        select17.selectByIndex(6);
+        WebElement modalButton17 = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton17.click();
+*/
+
+
+
+
+
+        // Then
+
+/*        WebElement firstRow = depositRows.get(0);
+        String innerHTML = firstRow.getAttribute("innerHTML");
+
+        if (innerHTML.contains(uuid)) {
+            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
+            Assert.assertTrue(innerHTML.contains(depositComment));
+            return true;     // expected condition is met
+        } else {
+            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
+        }
+*/
+
+    }
 
 
     @Test
