@@ -235,7 +235,7 @@ public class AppTest {
         WebElement projectdateInput = driver.findElement(By.id("fields_159"));
         projectdateInput.click();
 
-        WebElement activeDate = driver.findElement(By.cssSelector("td[class='active day']"));
+        WebElement activeDate = driver.findElement(By.cssSelector("td[class='active day']")); //proc negungovalo classname? s mezerou
         activeDate.click();
 
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
@@ -286,14 +286,65 @@ public class AppTest {
 
         driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
 
-        WebElement projectButton = driver.findElement(By.className("btn-primary"));
-        projectButton.click();
+
+//        WebElement resetSearch = driver.findElement(By.className("reset_search")); //
+
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".reset_search")));
+
+        WebElement resetSearch = driver.findElement(By.cssSelector(".reset_search"));
+        resetSearch.click();
+
+        WebElement searchInput = driver.findElement(By.id("entity_items_listing66_21_search_keywords"));
+        searchInput.sendKeys("xrotm01");
+
+        WebElement projectButton = driver.findElement(By.className("btn-info"));
+        projectButton.click();
+
+        WebDriverWait wait2 = new WebDriverWait(driver, 5);
+        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".item_heading_link")));
+
+        WebElement projectLink = driver.findElement(By.cssSelector(".item_heading_link"));
+        projectLink.click();
+
+        WebElement taskButton = driver.findElement(By.className("btn-primary"));
+        taskButton.click();
 
 
-        WebElement projectnameInput = driver.findElement(By.id("fields_158"));
+       WebDriverWait wait3 = new WebDriverWait(driver, 5);
+       wait3.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
+
+
+        WebElement tasknameInput = driver.findElement(By.id("fields_168"));
+        tasknameInput.sendKeys("xrotm01Task");
+
+        WebElement tasktypeSelect = driver.findElement(By.id("fields_167"));
+        Select select = new Select(tasktypeSelect);
+        select.selectByIndex(0);
+
+
+        WebElement taskstatusSelect = driver.findElement(By.id("fields_167"));
+        Select select2 = new Select(taskstatusSelect);
+        select2.selectByIndex(0);
+
+        WebElement taskprioSelect = driver.findElement(By.id("fields_170"));
+        Select select3 = new Select(taskprioSelect);
+        select3.selectByIndex(2);
+
+        //type Task, name, status New, prio Medium and some description - JAK?
+        //neni description
+
+        WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        modalButton.click();
+
+
+// entity_items_listing66_21_search_keywords
+
+
+        //odsud jine
+
+ /*       WebElement projectnameInput = driver.findElement(By.id("fields_158"));
         projectnameInput.sendKeys("xrotm01");
 
         WebElement projectprioritySelect = driver.findElement(By.id("fields_156"));
@@ -308,7 +359,7 @@ public class AppTest {
 
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
         modalButton.click();
-
+*/
         // Then
 
 /*        WebElement firstRow = depositRows.get(0);
