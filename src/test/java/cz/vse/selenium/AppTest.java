@@ -42,7 +42,6 @@ public class AppTest {
 //        driver.close();
     }
 
-
     @Test
     public void shouldLoginUsingValidCredentials() {
         // given
@@ -56,10 +55,9 @@ public class AppTest {
         WebElement loginButton = driver.findElement(By.className("btn-info"));
         loginButton.click();
 
-        // Then
-
+        // then
+        Assert.assertTrue(driver.getTitle().contains("Dashboard"));
     }
-
 
     @Test
     public void shouldNotLoginUsingInvalidCredentials() {
@@ -75,12 +73,8 @@ public class AppTest {
         loginButton.click();
 
         // then
-        //WebElement errorMessageSpan = driver.findElement(By.id("spanMessage"));
-        //Assert.assertEquals("Invalid credentials", errorMessageSpan.getText());
-
-        // validation error exists
-        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
-        // there is no menu
+        WebElement errorMessageDiv = driver.findElement(By.className("alert-danger"));
+        Assert.assertTrue(errorMessageDiv.getText().contains("No match"));
     }
 
     @Test
@@ -96,8 +90,6 @@ public class AppTest {
         WebElement loginButton = driver.findElement(By.className("btn-info"));
         loginButton.click();
 
-        //Thread.sleep(1000);
-
         //najit rozklikavaci menu
 
         //WebElement dropDownToggle = driver.findElement(By.id("user_notifications_report"));
@@ -106,7 +98,6 @@ public class AppTest {
         dropDownToggle.click();
 
         //najit radek, kliknout na nej
-
 
 /*      List<WebElement> menuInfoRows = driver.findElements(By.className("fa-sign-out"));
         WebElement oneRow = menuInfoRows.get(0);
@@ -118,6 +109,29 @@ public class AppTest {
 
 
         // Then
+
+
+
+//        WebElement errorMessageSpan = driver.findElement(By.id("spanMessage"));
+        //   Assert.assertEquals("Invalid credentials", errorMessageSpan.getText());
+
+        // validation error exists
+        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
+        // there is no menu
+
+
+        //       Assert.assertEquals("No match", errorMessageDiv.getText());
+
+        // validation error exists
+        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
+        // there is no menu
+
+
+
+
+
+
+
 
     }
 
@@ -142,21 +156,24 @@ public class AppTest {
         navBarToggle.click();
 
         //najit radek, kliknout na nej fa fa-reorder
-/*        WebElement projectsItem = driver.findElement(By.className("fa-reorder"));
-        projectsItem.click();
+
+  /*      List<WebElement> menuRows = driver.findElements(By.cssSelector("ul.page-sidebar-menu>li"));
+        for (WebElement e: menuRows) {
+            if (e.getText().equals("Projects")) {
+                e.click();
+            }
+        }
 */
-
-        List<WebElement> menuRows = driver.findElements(By.className("page-sidebar-menu"));
-        WebElement secondRow = menuRows.get(0);
-        secondRow.click();
-
         driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
 
-        WebElement projectButton = driver.findElement(By.className("btn-primary"));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-primary")));
+
+        WebElement projectButton = driver.findElement(By.cssSelector(".btn-primary"));
         projectButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-
+        WebDriverWait wait2 = new WebDriverWait(driver, 5);
+        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-primary-modal-action")));
 //fields_158
 
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
@@ -207,22 +224,25 @@ public class AppTest {
         WebElement navBarToggle = driver.findElement(By.className("navbar-toggle"));
         navBarToggle.click();
 
-        //najit radek, kliknout na nej fa fa-reorder
-/*        WebElement projectsItem = driver.findElement(By.className("fa-reorder"));
-        projectsItem.click();
+        //najit radek, kliknout na nej
+
+  /*      List<WebElement> menuRows = driver.findElements(By.cssSelector("ul.page-sidebar-menu>li"));
+        for (WebElement e: menuRows) {
+            if (e.getText().equals("Projects")) {
+                e.click();
+            }
+        }
 */
-
-        List<WebElement> menuRows = driver.findElements(By.className("page-sidebar-menu"));
-        WebElement secondRow = menuRows.get(0);
-        secondRow.click();
-
         driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
 
-        WebElement projectButton = driver.findElement(By.className("btn-primary"));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-primary")));
+
+        WebElement projectButton = driver.findElement(By.cssSelector(".btn-primary"));
         projectButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
+        WebDriverWait wait2 = new WebDriverWait(driver, 5);
+        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
 
 
         WebElement projectnameInput = driver.findElement(By.id("fields_158"));
@@ -558,6 +578,7 @@ public class AppTest {
         driver.quit();
     }
 
+    @Test
     public void shouldNotLoginUsingInvalidPassword() {
         // given
         driver.get("https://opensource-demo.orangehrmlive.com/");
