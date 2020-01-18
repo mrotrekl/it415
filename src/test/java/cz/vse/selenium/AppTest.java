@@ -244,9 +244,6 @@ public class AppTest {
         driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
 
 
-//        WebElement resetSearch = driver.findElement(By.className("reset_search")); //
-
-
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".reset_search")));
 
@@ -254,7 +251,7 @@ public class AppTest {
         resetSearch.click();
 
         WebElement searchInput = driver.findElement(By.id("entity_items_listing66_21_search_keywords"));
-        searchInput.sendKeys("xrotm01");
+        searchInput.sendKeys("xrotm01nemazat");
 
         WebElement projectButton = driver.findElement(By.className("btn-info"));
         projectButton.click();
@@ -263,6 +260,7 @@ public class AppTest {
         wait2.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".item_heading_link")));
 
         WebElement projectLink = driver.findElement(By.cssSelector(".item_heading_link"));
+        projectLink = driver.findElement(By.cssSelector(".item_heading_link")); //prvni nacteni nefunguje
         projectLink.click();
 
         WebElement taskButton = driver.findElement(By.className("btn-primary"));
@@ -273,8 +271,9 @@ public class AppTest {
        wait3.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#fields_168")));
 
 
+        String uuid = UUID.randomUUID().toString();
         WebElement tasknameInput = driver.findElement(By.id("fields_168"));
-        tasknameInput.sendKeys("xrotm01Task");
+        tasknameInput.sendKeys("xrotm01"+uuid+"Task");
 
         WebElement tasktypeSelect = driver.findElement(By.id("fields_167"));
         Select select = new Select(tasktypeSelect);
@@ -289,94 +288,26 @@ public class AppTest {
         Select select3 = new Select(taskprioSelect);
         select3.selectByIndex(2);
 
-        //type Task, name, status New, prio Medium and some description - JAK?
-        //neni description
+        //type Task, name, status New, prio Medium and some description
+
+        WebElement descriptionIFrame = driver.findElement(By.cssSelector(".cke_wysiwyg_frame"));
+        driver.switchTo().frame(descriptionIFrame);
+        WebElement descriptionBody = driver.findElement(By.cssSelector(".cke_contents_ltr"));
+        descriptionBody.sendKeys("mydescription");
+        driver.switchTo().defaultContent();
+
 
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
         modalButton.click();
 
+        // then
 
-
-
-
-        // Then
-
-/*        WebElement firstRow = depositRows.get(0);
-        String innerHTML = firstRow.getAttribute("innerHTML");
-
-        if (innerHTML.contains(uuid)) {
-            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
-            Assert.assertTrue(innerHTML.contains(depositComment));
-            return true;     // expected condition is met
-        } else {
-            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
-        }
-*/
-
-
-
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("$('#btn-primary').click()");
-
-//        class="btn btn-primary btn-primary-modal-action"
-
-
-/*       for (WebElement row : menuRows) {
-            row.click();
-        }
-
-*/
-        // Then
-
-/*        WebElement firstRow = depositRows.get(0);
-        String innerHTML = firstRow.getAttribute("innerHTML");
-
-        if (innerHTML.contains(uuid)) {
-            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
-            Assert.assertTrue(innerHTML.contains(depositComment));
-            return true;     // expected condition is met
-        } else {
-            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
-        }
-*/
-
-
-
-//        WebElement errorMessageSpan = driver.findElement(By.id("spanMessage"));
-        //   Assert.assertEquals("Invalid credentials", errorMessageSpan.getText());
-
-        // validation error exists
-        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
-        // there is no menu
-
-
-        //       Assert.assertEquals("No match", errorMessageDiv.getText());
-
-        // validation error exists
-        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
-        // there is no menu
-
-
-
-
-
-        // Then
-
-/*        WebElement firstRow = depositRows.get(0);
-        String innerHTML = firstRow.getAttribute("innerHTML");
-
-        if (innerHTML.contains(uuid)) {
-            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
-            Assert.assertTrue(innerHTML.contains(depositComment));
-            return true;     // expected condition is met
-        } else {
-            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
-        }
-*/
-
+        WebDriverWait wait4 = new WebDriverWait(driver, 5);
+        wait4.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".table-hover")));
+        WebElement taskTable = driver.findElement(By.cssSelector(".table-hover"));
+        String innerHTML = taskTable.getAttribute("innerHTML");
+        Assert.assertTrue(innerHTML.contains(uuid));
     }
-
-
 /*
  - TC: Project with status New, priority High and filled start date as today is created. Verify that there is new row in project table. Delete project after test.
     Test Suite - Tasks
@@ -525,19 +456,6 @@ public class AppTest {
 
 
         // Then
-
-/*        WebElement firstRow = depositRows.get(0);
-        String innerHTML = firstRow.getAttribute("innerHTML");
-
-        if (innerHTML.contains(uuid)) {
-            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
-            Assert.assertTrue(innerHTML.contains(depositComment));
-            return true;     // expected condition is met
-        } else {
-            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
-        }
-*/
-
     }
 
 
