@@ -91,14 +91,11 @@ public class AppTest {
         loginButton.click();
 
         //najit rozklikavaci menu
-
         //WebElement dropDownToggle = driver.findElement(By.id("user_notifications_report"));
-
         WebElement dropDownToggle = driver.findElement(By.cssSelector("body > div.header.navbar.navbar-inverse.navbar-fixed-top.noprint > div > ul > li.dropdown.user"));
         dropDownToggle.click();
 
         //najit radek, kliknout na nej
-
 /*      List<WebElement> menuInfoRows = driver.findElements(By.className("fa-sign-out"));
         WebElement oneRow = menuInfoRows.get(0);
         oneRow.click();
@@ -106,38 +103,13 @@ public class AppTest {
         WebElement menuInfoRows = driver.findElement(By.className("fa-sign-out"));
         menuInfoRows.click();
 
-
-
-        // Then
-
-
-
-//        WebElement errorMessageSpan = driver.findElement(By.id("spanMessage"));
-        //   Assert.assertEquals("Invalid credentials", errorMessageSpan.getText());
-
-        // validation error exists
-        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
-        // there is no menu
-
-
-        //       Assert.assertEquals("No match", errorMessageDiv.getText());
-
-        // validation error exists
-        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
-        // there is no menu
-
-
-
-
-
-
-
+        // then
+        WebElement errorMessageDiv = driver.findElement(By.className("form-title"));
+        Assert.assertTrue(errorMessageDiv.getText().contains("Login"));
 
     }
 
     // - TC: Project without name is not created
-
-
     @Test
     public void shouldNotCreateProjectwithoutName() {
         // given
@@ -155,7 +127,7 @@ public class AppTest {
         WebElement navBarToggle = driver.findElement(By.className("navbar-toggle"));
         navBarToggle.click();
 
-        //najit radek, kliknout na nej fa fa-reorder
+        //najit radek, kliknout na nej
 
   /*      List<WebElement> menuRows = driver.findElements(By.cssSelector("ul.page-sidebar-menu>li"));
         for (WebElement e: menuRows) {
@@ -174,36 +146,14 @@ public class AppTest {
 
         WebDriverWait wait2 = new WebDriverWait(driver, 5);
         wait2.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-primary-modal-action")));
-//fields_158
+
 
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
         modalButton.click();
 
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("$('#btn-primary').click()");
-
-//        class="btn btn-primary btn-primary-modal-action"
-
-
-/*       for (WebElement row : menuRows) {
-            row.click();
-        }
-
-*/
-        // Then
-
-/*        WebElement firstRow = depositRows.get(0);
-        String innerHTML = firstRow.getAttribute("innerHTML");
-
-        if (innerHTML.contains(uuid)) {
-            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
-            Assert.assertTrue(innerHTML.contains(depositComment));
-            return true;     // expected condition is met
-        } else {
-            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
-        }
-*/
-
+        // then
+        WebElement errorMessageLabel = driver.findElement(By.cssSelector("#fields_158-error"));
+        Assert.assertTrue(errorMessageLabel.getText().contains("This field is required!"));
     }
 
 
@@ -261,22 +211,9 @@ public class AppTest {
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
         modalButton.click();
 
-        // Then
-
-/*        WebElement firstRow = depositRows.get(0);
-        String innerHTML = firstRow.getAttribute("innerHTML");
-
-        if (innerHTML.contains(uuid)) {
-            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
-            Assert.assertTrue(innerHTML.contains(depositComment));
-            return true;     // expected condition is met
-        } else {
-            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
-        }
-*/
-
+        // then
+        Assert.assertTrue(driver.getTitle().contains("Tasks"));
     }
-
 
     @Test
     public void shouldCreateNewTask() {
@@ -357,6 +294,70 @@ public class AppTest {
 
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
         modalButton.click();
+
+
+
+
+
+        // Then
+
+/*        WebElement firstRow = depositRows.get(0);
+        String innerHTML = firstRow.getAttribute("innerHTML");
+
+        if (innerHTML.contains(uuid)) {
+            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
+            Assert.assertTrue(innerHTML.contains(depositComment));
+            return true;     // expected condition is met
+        } else {
+            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
+        }
+*/
+
+
+
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("$('#btn-primary').click()");
+
+//        class="btn btn-primary btn-primary-modal-action"
+
+
+/*       for (WebElement row : menuRows) {
+            row.click();
+        }
+
+*/
+        // Then
+
+/*        WebElement firstRow = depositRows.get(0);
+        String innerHTML = firstRow.getAttribute("innerHTML");
+
+        if (innerHTML.contains(uuid)) {
+            Assert.assertTrue(innerHTML.contains("10-30-18"));    // beware, different date format in table grid vs. input field
+            Assert.assertTrue(innerHTML.contains(depositComment));
+            return true;     // expected condition is met
+        } else {
+            return false;    // selenium webdriver will continue polling the DOM each 500ms and check the expected condition by calling method apply(webDriver) again
+        }
+*/
+
+
+
+//        WebElement errorMessageSpan = driver.findElement(By.id("spanMessage"));
+        //   Assert.assertEquals("Invalid credentials", errorMessageSpan.getText());
+
+        // validation error exists
+        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
+        // there is no menu
+
+
+        //       Assert.assertEquals("No match", errorMessageDiv.getText());
+
+        // validation error exists
+        // url changed to https://opensource-demo.orangehrmlive.com/index.php/auth/validateCredentials
+        // there is no menu
+
+
+
 
 
         // Then
