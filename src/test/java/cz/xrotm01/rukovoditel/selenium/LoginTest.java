@@ -91,7 +91,7 @@ public class LoginTest {
         loginButton.click();
 
         //najit rozklikavaci menu
-         WebElement dropDownToggle = driver.findElement(By.cssSelector("body > div.header.navbar.navbar-inverse.navbar-fixed-top.noprint > div > ul > li.dropdown.user"));
+        WebElement dropDownToggle = driver.findElement(By.cssSelector("body > div.header.navbar.navbar-inverse.navbar-fixed-top.noprint > div > ul > li.dropdown.user"));
         dropDownToggle.click();
 
         //najit radek, kliknout na nej

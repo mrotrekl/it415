@@ -68,27 +68,23 @@ public class ProjectTest {
             }
         }
 
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn btn-primary")));
-
-        WebElement projectButton = driver.findElement(By.cssSelector(".btn btn-primary"));
-        projectButton.click();
-
         // je treba odstranit problem s exception: element is not attached to the page document
         // pokud se pouzije vyse primo tento odkaz, problem nenastava driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
 
-        WebDriverWait wait2 = new WebDriverWait(driver, 5);
-        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-primary-modal-action")));
+        WebElement projectButton = driver.findElement(By.cssSelector(".btn-primary"));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(projectButton));
+        projectButton.click();
 
-
+        WebDriverWait wait2 = new WebDriverWait(driver, 10);
         WebElement modalButton = driver.findElement(By.cssSelector(".btn-primary-modal-action"));
+        wait2.until(ExpectedConditions.visibilityOf(modalButton));
         modalButton.click();
 
         // then
         WebElement errorMessageLabel = driver.findElement(By.cssSelector("#fields_158-error"));
         Assert.assertTrue(errorMessageLabel.getText().contains("This field is required!"));
     }
-
 
     @Test
     public void shouldCreateProjectwithName() {
@@ -109,30 +105,26 @@ public class ProjectTest {
 
         //najit radek, kliknout na nej
 
-  /*      List<WebElement> menuRows = driver.findElements(By.cssSelector("ul.page-sidebar-menu>li"));
+        List<WebElement> menuRows = driver.findElements(By.cssSelector("ul.page-sidebar-menu>li"));
         for (WebElement e: menuRows) {
             if (e.getText().equals("Projects")) {
                 e.click();
             }
         }
-*/
-        driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
-
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-primary")));
-
-        WebElement projectButton = driver.findElement(By.cssSelector(".btn-primary"));
-        projectButton.click();
 
         // je treba odstranit problem s exception: element is not attached to the page document
         // pokud se pouzije vyse primo tento odkaz, problem nenastava driver.get("http://digitalnizena.cz/rukovoditel/index.php?module=items/items&path=21");
 
-        WebDriverWait wait2 = new WebDriverWait(driver, 5);
-        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
+        WebElement projectButton = driver.findElement(By.cssSelector(".btn-primary"));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(projectButton));
+        projectButton.click();
 
         String uuid = UUID.randomUUID().toString();
 
         WebElement projectnameInput = driver.findElement(By.id("fields_158"));
+        WebDriverWait wait2 = new WebDriverWait(driver, 5);
+        wait2.until(ExpectedConditions.visibilityOf(projectnameInput));
         projectnameInput.sendKeys("xrotm01"+uuid);
 
         WebElement projectprioritySelect = driver.findElement(By.id("fields_156"));
@@ -155,8 +147,8 @@ public class ProjectTest {
 
         WebElement navBarToggle2 = driver.findElement(By.className("navbar-toggle"));
         navBarToggle2.click();
-        List<WebElement> menuRows = driver.findElements(By.cssSelector("ul.page-sidebar-menu>li"));
-        for (WebElement e: menuRows) {
+        List<WebElement> menuRows2 = driver.findElements(By.cssSelector("ul.page-sidebar-menu>li"));
+        for (WebElement e: menuRows2) {
             if (e.getText().equals("Projects")) {
                 e.click();
             }
@@ -164,13 +156,12 @@ public class ProjectTest {
 
         // then
 
-        WebDriverWait wait3 = new WebDriverWait(driver, 5);
-        wait3.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".table-hover")));
         WebElement projectTable = driver.findElement(By.cssSelector(".table-hover"));
+        WebDriverWait wait3 = new WebDriverWait(driver, 5);
+        wait3.until(ExpectedConditions.visibilityOf(projectTable));
         // kod je zrejme v poradku, presto vyjimka stale element reference: element is not attached to the page document
         String innerHTML = projectTable.getAttribute("innerHTML");
         Assert.assertTrue(innerHTML.contains(uuid));
-
 
     }
 
